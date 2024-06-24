@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa, #e0e0e0);
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #343a40;
+            animation: slideIn 1.5s ease-in-out;
+            font-weight: bold;
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+        .list-group-item {
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            background-color: #f8f9fa;
+            color: #495057;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+        .list-group-item:hover {
+            transform: scale(1.05);
+            background-color: #e9ecef;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .list-group-item:before {
+            content: "🎉";
+            font-size: 1.5rem;
+            margin-right: 10px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .list-group-item:hover:before {
+            transform: rotate(20deg);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Top Recommended Television Brands</h1>
+        <ul class="list-group mt-3">
+            {% for recommendation in recommendations %}
+                <li class="list-group-item">{{ recommendation[0] }} with probability {{ recommendation[1] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
